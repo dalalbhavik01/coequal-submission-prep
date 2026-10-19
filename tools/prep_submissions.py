@@ -556,16 +556,26 @@ def main() -> int:
         print(f"error: {src_dir} is not a folder", file=sys.stderr)
         return 2
 
-    files = sorted(
-        p for p in src_dir.iterdir()
-        if p.is_file() and not p.name.startswith(".") and p.resolve().parent != out_dir
-    )
+    # Office writes a lock file beside an open document, named "~$<name>".
+    # Canvas exports them when a student submits while the file is still open.
+    # They are ~165 bytes of nothing, and letting one reach the pipeline
+    # produces a conversion error that reads like a real failure. Drop them
+    # here, but report them, because a lock file in place of a deck usually
+    # means the real deliverable was never submitted.
+    files, locks = [], []
+    for p in sorted(src_dir.iterdir()):
+        if not p.is_file() or p.name.startswith(".") or p.resolve().parent == out_dir:
+            continue
+        (locks if "~$" in p.name else files).append(p)
+
     if not files:
         print(f"error: no files in {src_dir}", file=sys.stderr)
         return 2
 
     out_dir.mkdir(parents=True, exist_ok=True)
     rows, failures, skipped = [], [], []
+    for p in locks:
+        skipped.append((p.name, "Office lock file, not a submission — check the real file was submitted"))
 
     for src in files:
         ext = src.suffix.lower()

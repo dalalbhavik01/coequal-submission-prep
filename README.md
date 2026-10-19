@@ -121,7 +121,9 @@ sample file "for testing".
 |-- README.md
 |-- requirements.txt
 |-- docs/
-|   `-- pipeline-diagram.mmd
+|   |-- pipeline-diagram.mmd
+|   |-- portable-workflow.md
+|   `-- verification-checklist.md
 |-- skills/
 |   `-- prep-submissions/
 |       |-- SKILL.md
@@ -146,9 +148,13 @@ sample file "for testing".
 ## Setup On Another Device
 
 - **Agent skill:** copy `skills/prep-submissions` into the target agent's skills folder.
+- **Any other agent:** paste [docs/portable-workflow.md](docs/portable-workflow.md) as the
+  operating prompt.
 - **Tool only:** copy `tools/prep_submissions.py` and `requirements.txt`.
 
 The tool has no configuration and no account state — it reads a folder and writes a folder.
+
+Before signing off on a batch, run [docs/verification-checklist.md](docs/verification-checklist.md).
 
 ## Core Principle
 

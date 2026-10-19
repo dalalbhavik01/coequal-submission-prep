@@ -1,8 +1,10 @@
 # Document tooling for preparing Canvas submissions for CoEqual upload
 # (size trimming, format conversion, validation).
+#
+# Install into a virtual environment, not system-wide:
+#   python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
 python-docx>=1.1        # read/validate .docx, strip embedded fonts
-PyMuPDF>=1.24           # read/validate/compress .pdf
+PyMuPDF>=1.24           # read/validate/compress .pdf, render pages for the drift check
 Pillow>=10.0            # recompress images embedded in submissions
 numpy>=1.26             # pixel-level render comparison when verifying rewrites
-openpyxl>=3.1           # build the grades workbook
-python-pptx>=1.0        # verify slide count survives PowerPoint PDF export
+python-pptx>=1.0        # verify slide count survives the PDF export
