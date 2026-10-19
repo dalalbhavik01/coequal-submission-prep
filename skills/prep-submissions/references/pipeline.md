@@ -53,6 +53,15 @@ drift. Reject anything above a tolerance of ~3.0 and fall back rather than shipp
 guard exists because two bugs shipped silently without it: a stream rewrite that corrupted pages
 at drift 55–93, and a dropped soft mask that passed a loose tolerance at drift 8.4.
 
+## Step 2b — lossless polish (before giving up)
+
+Between recompressing images and flattening, there is a free rung worth taking: Flate-compress
+any stream that is still stored uncompressed, and deduplicate identical objects. Logos and
+headers repeat on every page and often sit in the file many times over.
+
+This changes nothing visible and pulled two files under the cap in a real batch without touching
+image quality. Try it before accepting any further loss.
+
 ## Step 3 — flatten (last resort)
 
 When a file still will not fit, flatten the pages to JPEG and re-insert the text as an

@@ -74,6 +74,19 @@ and ask for the student to re-export as PDF. Do not spend effort trying to resol
 Converting `.pptx` has a platform wrinkle worth knowing before you debug it:
 [references/troubleshooting.md](references/troubleshooting.md).
 
+## Check the batch, not just the files
+
+A file that converted cleanly can still be the wrong file, or the only file where two were
+expected. Before uploading, count files per team using the `<team>_` prefix Canvas puts on every
+export, and confirm the batch size matches the assignment's group count.
+
+The two failures this catches are both invisible to per-file checks: a team missing a
+deliverable entirely (which scores zero on whatever criterion it covered), and a batch that
+merges two course sections into an assignment configured for one. Both have happened; both are
+cheap to detect and expensive to unwind after upload.
+
+See [references/batch-integrity.md](references/batch-integrity.md).
+
 ## Never publish student data
 
 These folders hold real names, grades and written work. The repository `.gitignore` excludes
@@ -110,4 +123,5 @@ State what changed, what was left alone, and what could not be fixed. In particu
 
 - [references/pipeline.md](references/pipeline.md) — the ladder, per-format rules, the guards
 - [references/verification.md](references/verification.md) — what to check and the known false alarms
+- [references/batch-integrity.md](references/batch-integrity.md) — missing deliverables, merged sections, duplicates
 - [references/troubleshooting.md](references/troubleshooting.md) — platform quirks and environment limits

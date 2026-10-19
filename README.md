@@ -50,6 +50,8 @@ So the work is diagnostic before it is destructive.
   changes the page.
 - Falls back to flattening with an invisible text layer rather than shipping an unreadable file.
 - Validates every output: format, size, and content retention.
+- Checks the batch, not just the files — missing deliverables and merged course sections are
+  invisible per-file and change grades.
 - Identifies files that cannot be fixed — `.gdoc` link stubs, Office lock files, missing
   deliverables — instead of silently passing them through.
 - Leaves originals untouched and is safe to re-run.
@@ -128,6 +130,7 @@ sample file "for testing".
 |   `-- prep-submissions/
 |       |-- SKILL.md
 |       `-- references/
+|           |-- batch-integrity.md
 |           |-- pipeline.md
 |           |-- verification.md
 |           `-- troubleshooting.md
