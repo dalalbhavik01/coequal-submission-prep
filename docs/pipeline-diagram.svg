@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">Simple Canvas to CoEqual Submission Prep Workflow</title>
+  <desc id="desc">A simple escalation ladder: take a Canvas bulk download, route each file by type, strip embedded fonts losslessly, recompress images only if still over the cap, flatten as a last resort, then validate and write an upload-ready folder.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2d4f6c"/>
+    </marker>
+    <marker id="warnArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#a44b16"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 27px Arial, sans-serif; fill: #12263a; }
+      .subtitle { font: 400 15px Arial, sans-serif; fill: #536579; }
+      .box { fill: #ffffff; stroke: #b7c6d6; stroke-width: 2; rx: 10; }
+      .safe { fill: #eefaf1; stroke: #2f855a; stroke-width: 2; rx: 10; }
+      .check { fill: #f3f0ff; stroke: #7353c7; stroke-width: 2; rx: 10; }
+      .stop { fill: #fff7ed; stroke: #c05621; stroke-width: 2; rx: 10; }
+      .done { fill: #edf7ff; stroke: #2b6cb0; stroke-width: 2; rx: 10; }
+      .label { font: 700 17px Arial, sans-serif; fill: #12263a; }
+      .text { font: 400 14px Arial, sans-serif; fill: #44566c; }
+      .small { font: 700 12px Arial, sans-serif; fill: #2f6f44; }
+      .arrow { stroke: #2d4f6c; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .warnLine { stroke: #a44b16; stroke-width: 2.5; fill: none; marker-end: url(#warnArrow); }
+      .softLine { stroke: #7b8794; stroke-width: 2; fill: none; stroke-dasharray: 5 5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="980" height="620"/>
+  <text class="title" x="490" y="42" text-anchor="middle">Canvas to CoEqual Submission Prep</text>
+  <text class="subtitle" x="490" y="68" text-anchor="middle">Cheapest fix first, and never a smaller file at the cost of a readable one</text>
+
+  <rect class="safe" x="640" y="100" width="265" height="118"/>
+  <text class="label" x="772.5" y="130" text-anchor="middle">Hard Limits</text>
+  <text class="text" x="772.5" y="157" text-anchor="middle">500 KB per file, a hard reject</text>
+  <text class="text" x="772.5" y="180" text-anchor="middle">Only .docx and .pdf accepted</text>
+  <text class="text" x="772.5" y="203" text-anchor="middle">Student data is never published</text>
+
+  <rect class="box" x="85" y="105" width="430" height="62"/>
+  <text class="label" x="300" y="132" text-anchor="middle">1. Canvas Bulk Download</text>
+  <text class="text" x="300" y="153" text-anchor="middle">A folder of .docx, .pdf, .html and .pptx submissions.</text>
+
+  <rect class="box" x="85" y="205" width="430" height="76"/>
+  <text class="label" x="300" y="233" text-anchor="middle">2. Route By File Type</text>
+  <text class="text" x="300" y="255" text-anchor="middle">Convert .html text entries and .pptx decks to accepted formats.</text>
+  <text class="small" x="300" y="273" text-anchor="middle">.gdoc stubs and ~$ lock files are reported, never converted.</text>
+
+  <rect class="safe" x="85" y="319" width="430" height="76"/>
+  <text class="label" x="300" y="347" text-anchor="middle">3. Strip Embedded Fonts</text>
+  <text class="text" x="300" y="369" text-anchor="middle">Lossless. Fonts are cosmetic, and often most of the file.</text>
+  <text class="small" x="300" y="388" text-anchor="middle">Most files clear the cap here and are never touched again.</text>
+
+  <rect class="check" x="85" y="433" width="430" height="76"/>
+  <text class="label" x="300" y="461" text-anchor="middle">4. Recompress Images</text>
+  <text class="text" x="300" y="483" text-anchor="middle">Only if still over. Each rewrite is rendered and compared,</text>
+  <text class="text" x="300" y="502" text-anchor="middle">and rejected if the page visibly changed.</text>
+
+  <rect class="check" x="610" y="319" width="285" height="76"/>
+  <text class="label" x="752.5" y="347" text-anchor="middle">Still Over The Cap?</text>
+  <text class="text" x="752.5" y="369" text-anchor="middle">If image data is not the bulk,</text>
+  <text class="text" x="752.5" y="388" text-anchor="middle">compressing further only costs quality.</text>
+
+  <rect class="stop" x="610" y="433" width="285" height="76"/>
+  <text class="label" x="752.5" y="461" text-anchor="middle">Flatten Or Stop</text>
+  <text class="text" x="752.5" y="483" text-anchor="middle">Flatten with the text layer kept, or</text>
+  <text class="text" x="752.5" y="502" text-anchor="middle">leave the original and report why.</text>
+
+  <rect class="done" x="260" y="542" width="460" height="64"/>
+  <text class="label" x="490" y="565" text-anchor="middle">5. Validate, Then upload-ready/</text>
+  <text class="text" x="490" y="586" text-anchor="middle">Format, size, text retained, slide count,</text>
+  <text class="text" x="490" y="602" text-anchor="middle">and every team accounted for.</text>
+
+  <path class="arrow" d="M300 167 L300 205"/>
+  <path class="arrow" d="M300 281 L300 319"/>
+  <path class="arrow" d="M300 395 L300 433"/>
+  <path class="arrow" d="M515 471 C565 471 575 357 610 357"/>
+  <path class="warnLine" d="M752.5 395 L752.5 433"/>
+  <path class="arrow" d="M610 357 C540 357 490 475 490 542"/>
+  <path class="softLine" d="M640 160 C570 160 545 238 515 243"/>
+  <path class="softLine" d="M640 170 C565 215 555 350 515 357"/>
+  <path class="softLine" d="M640 185 C585 250 558 460 515 471"/>
+</svg>

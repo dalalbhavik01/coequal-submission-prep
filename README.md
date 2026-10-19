@@ -13,19 +13,9 @@ which creates the assignment. This one prepares the submissions that go into it.
 
 ## At A Glance
 
-```mermaid
-flowchart TD
-    A["Canvas folder<br/>.docx .pdf .html .pptx"] --> B["Route by file type"]
-    B --> C["Strip embedded fonts<br/>lossless"]
-    C --> D{"Under 500 KB?"}
-    D -->|yes| H["upload-ready/"]
-    D -->|no| E["Recompress images<br/>render-diff guarded"]
-    E --> F{"Under 500 KB?"}
-    F -->|yes| H
-    F -->|no| G["Flatten pages<br/>last resort, text kept"]
-    G --> H
-    H --> I["Validate<br/>format, size, content retained"]
-```
+Simple overview.
+
+![Canvas to CoEqual submission prep](docs/pipeline-diagram.svg)
 
 The organising principle is an escalation ladder: apply the cheapest, least destructive fix
 first, and stop the moment the file clears the cap. Most files never get past the first rung.
@@ -116,6 +106,27 @@ Submission folders hold real student names, grades and written work. This reposi
 every document extension. Keep it that way. Do not commit a submission, a grade export, or a
 sample file "for testing".
 
+## Pipeline Diagram
+
+Detailed flow.
+
+The visual diagram above is the easiest view. The editable Mermaid source is also kept in
+[docs/pipeline-diagram.mmd](docs/pipeline-diagram.mmd).
+
+```mermaid
+flowchart TD
+    A["Canvas folder<br/>.docx .pdf .html .pptx"] --> B["Route by file type"]
+    B --> C["Strip embedded fonts<br/>lossless"]
+    C --> D{"Under 500 KB?"}
+    D -->|yes| H["upload-ready/"]
+    D -->|no| E["Recompress images<br/>render-diff guarded"]
+    E --> F{"Under 500 KB?"}
+    F -->|yes| H
+    F -->|no| G["Flatten pages<br/>last resort, text kept"]
+    G --> H
+    H --> I["Validate<br/>format, size, content retained"]
+```
+
 ## Repository Structure
 
 ```text
@@ -123,6 +134,7 @@ sample file "for testing".
 |-- README.md
 |-- requirements.txt
 |-- docs/
+|   |-- pipeline-diagram.svg
 |   |-- pipeline-diagram.mmd
 |   |-- portable-workflow.md
 |   `-- verification-checklist.md
