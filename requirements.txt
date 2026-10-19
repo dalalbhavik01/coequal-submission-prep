@@ -1,0 +1,8 @@
+# Document tooling for preparing Canvas submissions for CoEqual upload
+# (size trimming, format conversion, validation).
+python-docx>=1.1        # read/validate .docx, strip embedded fonts
+PyMuPDF>=1.24           # read/validate/compress .pdf
+Pillow>=10.0            # recompress images embedded in submissions
+numpy>=1.26             # pixel-level render comparison when verifying rewrites
+openpyxl>=3.1           # build the grades workbook
+python-pptx>=1.0        # verify slide count survives PowerPoint PDF export

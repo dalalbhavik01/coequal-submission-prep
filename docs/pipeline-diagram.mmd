@@ -1,0 +1,11 @@
+flowchart TD
+    A["Canvas folder<br/>.docx .pdf .html .pptx"] --> B["Route by file type"]
+    B --> C["Strip embedded fonts<br/>lossless"]
+    C --> D{"Under 500 KB?"}
+    D -->|yes| H["upload-ready/"]
+    D -->|no| E["Recompress images<br/>render-diff guarded"]
+    E --> F{"Under 500 KB?"}
+    F -->|yes| H
+    F -->|no| G["Flatten pages<br/>last resort, text kept"]
+    G --> H
+    H --> I["Validate<br/>format, size, content retained"]

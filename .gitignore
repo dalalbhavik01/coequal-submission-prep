@@ -1,0 +1,39 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# student data — never publish (repo is public)
+outputs/
+downloads/
+submissions/
+upload-ready/
+student-data/
+grades/
+*.xlsx
+*.xls
+*.csv
+*.docx
+*.pdf
+*.pptx
+*.ppt
+*.zip
+*.7z
+*.rar
+
+# instructor sample solutions / answer keys
+solutions/
+
+.env
+.env.*
+!.env.example
+
+# local private config
+config.json
+
+# skill install symlink
+.claude/skills/
+
+# python
+.venv/
+__pycache__/
